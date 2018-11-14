@@ -58,7 +58,6 @@ export function filterProducts (productsToFilter, filters) {
     for (let i=0; i<filters.length; i++) {
       let filter = filters[i]
 
-      console.log(filter)
       switch (filter.key) {
         case 'available':
           found = product[filter.key] === filter.value

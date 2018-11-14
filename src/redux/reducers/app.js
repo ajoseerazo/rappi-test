@@ -69,7 +69,16 @@ export default function appReducer (state = initialState, action) {
       return state.set("productsFiltered", filteredProducts)
                   .set("filters", newFilters)
     case actions.CLEAR_FILTERS:
+      let clearedFinalProducts = state.get("products")
+
+      // if sorted is applied, sort original list
+      if (state.get("sort")) {
+        clearedFinalProducts = sortProducts(clearedFinalProducts, state.get("sort").key, state.get("sort").mode)  
+      }
+
       return state.set("filters", [])
+                  .set("productsFiltered", [])
+                  .set("products", clearedFinalProducts)
     default:
       return state
   }

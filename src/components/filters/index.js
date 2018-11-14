@@ -9,7 +9,7 @@ import 'react-input-range/lib/css/index.css';
 import './style.scss';
 
 export default class Filters extends Component {
-  state = {}
+  state = { }
 
   componentDidMount() {
     this._setInitialValues(this.props)
@@ -82,22 +82,28 @@ export default class Filters extends Component {
 
         <div className="filter-item">
           <Label>Rango de Precio</Label>
-          <InputRange
-            maxValue={priceRange.max}
-            minValue={priceRange.min}
-            value={price}
-            step={100}
-            onChange={this.onChangePrice} />
+          {
+            price !== undefined &&
+            <InputRange
+              maxValue={priceRange.max}
+              minValue={priceRange.min}
+              value={price}
+              step={100}
+              onChange={this.onChangePrice} />
+          }
         </div>
 
         <div className="filter-item">
           <Label>Cantidad en stock</Label>
-          <InputRange
-            maxValue={stockRange.max}
-            minValue={stockRange.min}
-            step={100}
-            value={quantity}
-            onChange={this.onChangeQuantity} />
+          {
+            quantity !== undefined &&
+            <InputRange
+              maxValue={stockRange.max}
+              minValue={stockRange.min}
+              step={100}
+              value={quantity}
+              onChange={this.onChangeQuantity} />
+          }
         </div>
       </div>
     )
