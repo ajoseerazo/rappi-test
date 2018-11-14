@@ -6,7 +6,7 @@ import {
 
 export default class Sort extends Component {
   onChange = (e) => {
-    if (e.target.value) {
+    if (e.target.value && e.target.value.trim() !== '') {
       let value = JSON.parse(e.target.value)
 
       const { onSelectOption } = this.props
@@ -20,7 +20,7 @@ export default class Sort extends Component {
       <Form inline>
         <Label>Ordenar por:</Label>
         <Input type="select" name="select" onChange={this.onChange} >
-          <option> --- </option>
+          <option value=''> --- </option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'desc'})}>Precio: Mayor a menor</option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'asc'})}>Precio: Menor a mayor</option>
           <option value={JSON.stringify({key: 'quantity', mode: 'desc'})}>Cantidad en stock: Mayor a menor</option>

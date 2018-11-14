@@ -13,13 +13,21 @@ const initialState = new Map({
   }),
   categories,
   itemSelected: null,
-  breadcrumb: ['Todos']
+  breadcrumb: ['Todos'],
+  sort: null
 })
 
 export default function appReducer (state = initialState, action) {
   switch (action.type) {
     case actions.SELECT_ITEM:
-      return state.set("products", action.products)
+      let finalProducts = action.products
+
+      // Check if sort already applied
+      if (state.get("sort")) {
+        finalProducts = _.orderBy(finalProducts, state.get("sort").key, state.get("sort").mode)
+      }
+
+      return state.set("products", finalProducts)
                   .set("itemSelected", action.item)
                   .set("breadcrumb", action.breadcrumb)
     case actions.SORT_PRODUCTS:
@@ -28,6 +36,7 @@ export default function appReducer (state = initialState, action) {
       const sortedProducts = _.orderBy(currentProducts, action.key, action.mode)
 
       return state.set("products", sortedProducts)
+                  .set("sort", {key: action.key, mode: action.mode})
     default:
       return state
   }
