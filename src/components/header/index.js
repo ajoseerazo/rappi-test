@@ -1,16 +1,25 @@
 import React, { Component } from 'react'
 import {
+  Nav,
+  NavItem,
   Navbar,
-  NavbarBrand } from 'reactstrap';
+  NavbarBrand,
+  Button } from 'reactstrap';
 
 export default class Header extends Component {
   render () {
+    const { onClickCartButton, productsCount } = this.props
+
     return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">e-commerce</NavbarBrand>
-        </Navbar>
-      </div>
+      <Navbar color="light" light expand="md" fixed="top">
+        <NavbarBrand href="/">e-commerce</NavbarBrand>
+
+        <Nav className="ml-auto" navbar>
+          <NavItem>
+            <Button onClick={onClickCartButton}>Carrito ({productsCount})</Button>
+          </NavItem>
+        </Nav>
+      </Navbar>
     )
   }
 }

@@ -8,7 +8,7 @@ import './style.scss';
 
 export default class ProductsList extends Component {
   render () {
-    const { products, itemSelected, breadcrumb } = this.props;
+    const { products, breadcrumb, onAddToCart } = this.props;
 
     return (
       <div className="products-list-container">
@@ -34,7 +34,7 @@ export default class ProductsList extends Component {
         <Row className="products-list">
         {
           products.map(product => {
-            return <Product key={product.id} product={product} />
+            return <Product key={product.id} product={product} onAddToCart={onAddToCart} />
           })
         }
       </Row>

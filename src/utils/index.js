@@ -143,3 +143,19 @@ export function searchProductsInSublevelByQuery (query, sublevel) {
     return regex.test(product.name)
   })
 }
+
+export function updateCartInLocalStorage (products) {
+  localStorage.setItem('cart', JSON.stringify(products))
+}
+
+export function getCartFromLocalStorage () {
+  if (!localStorage.getItem('cart')) {
+    return []
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem('cart')).products || []
+  } catch (err) {
+    return []
+  }
+}

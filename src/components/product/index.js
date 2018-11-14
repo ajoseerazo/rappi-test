@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { 
   Card, 
-  CardImg, 
   CardText, 
   CardBody,
   CardTitle, 
@@ -9,6 +8,12 @@ import {
   Button } from 'reactstrap';
 
 export default class Product extends Component {
+  onClickOnAddToCart = () => {
+    const { onAddToCart, product } = this.props
+
+    onAddToCart(product)
+  }
+
   render () {
     const { product } = this.props;
 
@@ -20,7 +25,7 @@ export default class Product extends Component {
             <CardSubtitle className="text-right">Cantidad: {product.quantity}</CardSubtitle>
             <CardText className="text-right">Precio: {product.price}</CardText>
             <CardText className="text-right">{product.available ? 'Disponible' : 'No disponible'}</CardText>
-            <Button disabled={!product.available} >Agregar al carrito</Button>
+            <Button disabled={!product.available} onClick={this.onClickOnAddToCart} >Agregar al carrito</Button>
           </CardBody>
         </Card>
       </div>
