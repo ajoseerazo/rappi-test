@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap';
 import { SideNav, Nav } from 'react-sidenav'
-import Filters from '../filters'
+import Filters from '../../containers/filters'
 import './style.scss';
 
 export default class LeftNavigation extends Component {

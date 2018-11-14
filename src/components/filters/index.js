@@ -8,6 +8,32 @@ import 'react-input-range/lib/css/index.css';
 import './style.scss';
 
 export default class Filters extends Component {
+  onChangeInput = (e) => {
+    const { onFilterChanged } = this.props
+
+
+    console.log(this.props)
+    console.log(onFilterChanged)
+
+    const value = e.target.value
+
+    if (value !== undefined) {
+      onFilterChanged({key: 'available', value: JSON.parse(value)})
+    }
+  }
+
+  onChangePrice = (value) => {
+    const { onFilterChanged } = this.props
+
+    onFilterChanged({key: 'price', value})    
+  }
+
+  onChangeQuantity = (value) => {
+    const { onFilterChanged } = this.props
+
+    onFilterChanged({key: 'quantity', value})    
+  }
+
   render () {
     return (
       <div className="filters">
@@ -15,10 +41,10 @@ export default class Filters extends Component {
 
         <div className="filter-item">
           <Label>Disponibilidad</Label>
-          <Input type="select" name="select">
+          <Input type="select" name="select" onChange={this.onChangeInput}>
             <option> --- </option>
-            <option>Disponible</option>
-            <option>No disponible</option>
+            <option value={true}>Disponible</option>
+            <option value={false}>No disponible</option>
           </Input>
         </div>
 
@@ -27,7 +53,8 @@ export default class Filters extends Component {
           <InputRange
             maxValue={20}
             minValue={0}
-            value={{min: 2, max: 19}} />
+            value={{min: 2, max: 19}}
+            onChange={this.onChangePrice} />
         </div>
 
         <div className="filter-item">
@@ -35,7 +62,8 @@ export default class Filters extends Component {
           <InputRange
             maxValue={20}
             minValue={0}
-            value={14} />
+            value={14}
+            onChange={this.onChangeQuantity} />
         </div>
       </div>
     )

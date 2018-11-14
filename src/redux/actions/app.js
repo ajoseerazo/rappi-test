@@ -5,6 +5,7 @@ import _ from 'lodash';
 const appActions = {
   SELECT_ITEM: 'SELECT_ITEM',
   SORT_PRODUCTS: 'SORT_PRODUCTS',
+  FILTER_PRODUCTS: 'FILTER_PRODUCTS',
   selectItem: (item) => {
     let productsFiltered = []
 
@@ -28,6 +29,13 @@ const appActions = {
       type: appActions.SORT_PRODUCTS,
       key, 
       mode
+    }
+  },
+  filterProducts: ({key, value}) => {
+    return {
+      type: appActions.FILTER_PRODUCTS,
+      key,
+      value
     }
   }
 }

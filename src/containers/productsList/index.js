@@ -12,10 +12,10 @@ class ProductsListContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { products, itemSelected, breadcrumb } = state.App.toJS() 
+  const { products, itemSelected, breadcrumb, productsFiltered, filters } = state.App.toJS() 
 
   return {
-    products,
+    products: filters.length ? productsFiltered : products,
     itemSelected,
     breadcrumb
   }

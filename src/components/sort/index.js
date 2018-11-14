@@ -6,7 +6,7 @@ import {
 
 export default class Sort extends Component {
   onChange = (e) => {
-    if (e.target.value && e.target.value.trim() !== '') {
+    if (e.target.value !== '') {
       let value = JSON.parse(e.target.value)
 
       const { onSelectOption } = this.props

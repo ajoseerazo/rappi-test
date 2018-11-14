@@ -50,3 +50,35 @@ export function getBreadcrumb (items, item, path, found) {
     path.pop()
   }
 }
+
+export function filterProducts (productsToFilter, key, value) {
+  return _.filter(productsToFilter, (product) => {
+    if (key === 'quantity' || 'available') {
+      return product[key] === value
+    } else {
+      if (key === 'price') {
+        return product.priceNumber >= value.min && product.priceNumber <= value.max
+      }
+    }
+  })
+}
+
+export function sortProducts (productsToSort, key, mode) {
+  return _.orderBy(productsToSort, key, mode)
+}
+
+export function updateFilters (filters, {key, value}) {
+  let newFilters = filters.slice()
+
+  let index = _.findIndex(filters, (f) => {
+    return f.key === key
+  })
+
+  if (index === -1) {
+    newFilters.push({key, value})
+  } else {
+    newFilters[index].value = value
+  }
+
+  return newFilters
+}
