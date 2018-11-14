@@ -3,6 +3,7 @@ import {
   Col,
   Row } from 'reactstrap';
 import Product from '../product';
+import Sort from '../../containers/sort'
 import './style.scss';
 
 export default class ProductsList extends Component {
@@ -23,7 +24,10 @@ export default class ProductsList extends Component {
         </Row>
 
         <Row>
-          <Col sm={{ size: 4, offset: 8 }}> 
+          <Col sm="8">
+            <Sort />
+          </Col>
+          <Col sm="4"> 
             <h4 className="text-right">{products.length} {`resultado${products.length !== 1 ? 's' : ''}`}</h4>
           </Col>
         </Row>

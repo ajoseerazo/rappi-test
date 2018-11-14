@@ -9,7 +9,10 @@ export function searchProductsBySublevel (item, productsResult) {
   })
 
   productsFiltered.forEach(product => {
-    productsResult.push(product)
+    productsResult.push({
+      ...product,
+      priceNumber: parseFloat(product.price.replace(/,/g, "").replace(/\$/g, ""))
+    })
   })  
 
   // Search for products of children of this item

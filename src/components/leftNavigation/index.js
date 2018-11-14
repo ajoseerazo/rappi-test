@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Input } from 'reactstrap';
-import './style.scss';
-
 import { SideNav, Nav } from 'react-sidenav'
+import Filters from '../filters'
+import './style.scss';
 
 export default class LeftNavigation extends Component {
   renderItem = (item) => {
@@ -38,6 +38,8 @@ export default class LeftNavigation extends Component {
         <SideNav defaultSelectedPath="1">
           {this.renderItems(items)}
         </SideNav>
+
+        <Filters />
       </div>
     );
   }
