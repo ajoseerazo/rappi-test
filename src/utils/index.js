@@ -1,4 +1,5 @@
 import products from '../data/products';
+import _ from 'lodash';
 
 export function searchProductsBySublevel (item, productsResult) {
   const { id } = item;
