@@ -52,19 +52,40 @@ export function getBreadcrumb (items, item, path, found) {
   }
 }
 
-export function filterProducts (productsToFilter, key, value) {
+export function filterProducts (productsToFilter, filters) {
   return _.filter(productsToFilter, (product) => {
-    if (key === 'quantity' || 'available') {
-      return product[key] === value
-    } else {
-      if (key === 'price') {
-        return product.priceNumber >= value.min && product.priceNumber <= value.max
+    let found = false
+    for (let i=0; i<filters.length; i++) {
+      let filter = filters[i]
+
+      console.log(filter)
+      switch (filter.key) {
+        case 'available':
+          found = product[filter.key] === filter.value
+          break;
+        case 'quantity':
+          found = product[filter.key] <= filter.value
+          break;
+        case 'price':
+          found = product.priceNumber >= filter.value.min && product.priceNumber <= filter.value.max
+          break;
+        default:
+          found = false
+          break;
+      }
+
+      if (!found) {
+        break
       }
     }
+
+    //console.log(found)
+
+    return found
   })
 }
 
-export function sortProducts (productsToSort, key, mode) {
+export function sortProducts (productsToSort, key, mode = 'asc') {
   return _.orderBy(productsToSort, key, mode)
 }
 
@@ -82,4 +103,31 @@ export function updateFilters (filters, {key, value}) {
   }
 
   return newFilters
+}
+
+export function getQuantityRange () {
+  const productsSorted = sortProducts(products, 'quantity')
+
+  return {
+    min: productsSorted[0].quantity,
+    max: productsSorted[productsSorted.length - 1].quantity
+  }
+}
+
+export function getpriceRange () {
+  const productsNormalized = products.map((p) => {
+    return {
+      ...p,
+      priceNumber: parseFloat(p.price.replace(/,/g, "").replace(/\$/g, ""))
+    }
+  })
+
+  const productsSorted = sortProducts(productsNormalized, 'priceNumber')
+
+  console.log(productsSorted)
+
+  return {
+    min: productsSorted[0].priceNumber,
+    max: productsSorted[productsSorted.length - 1].priceNumber
+  }
 }

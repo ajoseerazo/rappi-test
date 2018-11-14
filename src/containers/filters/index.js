@@ -5,30 +5,36 @@ import { bindActionCreators } from 'redux'
 import actions from '../../redux/actions/app'
 
 const {
-  filterProducts
+  filterProducts,
+  clearFilters
 } = actions
 
 class FiltersContainer extends Component {
   render () {
-    const { actions: { filterProducts } } = this.props 
+    const { 
+      actions: { filterProducts, clearFilters },
+      stockRange,
+      priceRange,
+      filters } = this.props 
 
-    console.log(this.props)
     return (
-      <Filters onFilterChanged={filterProducts} />
+      <Filters filters={filters} onFilterChanged={filterProducts} stockRange={stockRange} priceRange={priceRange} onClearFilters={clearFilters} />
     )
   }
 }
 
 function mapStateToProps(state) {
-  const { filters } = state.App.toJS() 
+  const { filters, stockRange, priceRange } = state.App.toJS() 
 
   return { 
-    filters
+    filters,
+    stockRange,
+    priceRange
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ filterProducts }, dispatch) }
+  return { actions: bindActionCreators({ filterProducts, clearFilters }, dispatch) }
 }
 
 export default connect(

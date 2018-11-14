@@ -6,6 +6,7 @@ const appActions = {
   SELECT_ITEM: 'SELECT_ITEM',
   SORT_PRODUCTS: 'SORT_PRODUCTS',
   FILTER_PRODUCTS: 'FILTER_PRODUCTS',
+  CLEAR_FILTERS: 'CLEAR_FILTERS',
   selectItem: (item) => {
     let productsFiltered = []
 
@@ -36,6 +37,11 @@ const appActions = {
       type: appActions.FILTER_PRODUCTS,
       key,
       value
+    }
+  },
+  clearFilters: () => {
+    return {
+      type: appActions.CLEAR_FILTERS
     }
   }
 }
