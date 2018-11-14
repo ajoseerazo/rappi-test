@@ -7,7 +7,9 @@ import {
   sortProducts, 
   updateFilters,
   getQuantityRange,
-  getpriceRange } from '../../utils'
+  getpriceRange,
+  searchProductsBySublevel,
+  searchProductsInSublevelByQuery } from '../../utils'
 import _ from 'lodash'
 
 const initialState = new Map({
@@ -69,7 +71,15 @@ export default function appReducer (state = initialState, action) {
       return state.set("productsFiltered", filteredProducts)
                   .set("filters", newFilters)
     case actions.CLEAR_FILTERS:
-      let clearedFinalProducts = state.get("products")
+      let clearedFinalProducts = []
+      
+      if (state.get("itemSelected")) {
+        let productsFilteredCleared = []
+        searchProductsBySublevel(state.get("itemSelected"), productsFilteredCleared);
+        clearedFinalProducts = _.uniqBy(productsFilteredCleared, 'id');    
+      } else {
+        clearedFinalProducts = state.get("products") 
+      }
 
       // if sorted is applied, sort original list
       if (state.get("sort")) {
@@ -79,6 +89,25 @@ export default function appReducer (state = initialState, action) {
       return state.set("filters", [])
                   .set("productsFiltered", [])
                   .set("products", clearedFinalProducts)
+    case actions.SEARCH_IN_SUBLEVEL:
+      let productsFilteredByQuery = searchProductsInSublevelByQuery(action.query, action.item)
+
+      let productsKey = 'products'
+
+      // If filters applied, apply it
+      if (state.get("filters").length) {
+        productsKey = 'productsFiltered'
+        productsFilteredByQuery = filterProducts(productsFilteredByQuery, state.get("filters"))
+      }
+
+      // If sort applied, apply it
+      if (state.get("sort")) {
+        productsFilteredByQuery = sortProducts(productsFilteredByQuery, state.get("sort").key, state.get("sort").mode)  
+      }
+
+      console.log(productsFilteredByQuery)
+
+      return state.set(productsKey, productsFilteredByQuery)
     default:
       return state
   }

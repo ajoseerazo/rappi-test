@@ -7,6 +7,7 @@ const appActions = {
   SORT_PRODUCTS: 'SORT_PRODUCTS',
   FILTER_PRODUCTS: 'FILTER_PRODUCTS',
   CLEAR_FILTERS: 'CLEAR_FILTERS',
+  SEARCH_IN_SUBLEVEL: 'SEARCH_IN_SUBLEVEL',
   selectItem: (item) => {
     let productsFiltered = []
 
@@ -42,6 +43,13 @@ const appActions = {
   clearFilters: () => {
     return {
       type: appActions.CLEAR_FILTERS
+    }
+  },
+  searchInSublevel: (query, item) => {
+    return {
+      type: appActions.SEARCH_IN_SUBLEVEL,
+      query,
+      item
     }
   }
 }

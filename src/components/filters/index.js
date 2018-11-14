@@ -29,9 +29,7 @@ export default class Filters extends Component {
 
     const value = e.target.value
 
-    if (value !== '') {
-      onFilterChanged({key: 'available', value: JSON.parse(value)})
-    }
+    onFilterChanged({key: 'available', value: value !== '' ? JSON.parse(value) : ''})
   }
 
   onChangePrice = (value) => {
@@ -63,13 +61,13 @@ export default class Filters extends Component {
 
   render () {
     const { price, quantity, available } = this.state
-    const { stockRange, priceRange, onClearFilters } = this.props
+    const { stockRange, priceRange, onClearFilters, filters } = this.props
 
     return (
       <div className="filters">
         <h4>Filtros</h4>
 
-        <Button size="sm" color="primary" onClick={onClearFilters}>Limpiar filtros</Button>
+        <Button size="sm" color="primary" onClick={onClearFilters} disabled={!filters.length}>Limpiar filtros</Button>
 
         <div className="filter-item">
           <Label>Disponibilidad</Label>

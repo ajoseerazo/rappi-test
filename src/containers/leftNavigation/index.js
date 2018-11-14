@@ -5,15 +5,16 @@ import LeftNavigation from '../../components/leftNavigation'
 import app from '../../redux/actions/app'
 
 const {
-  selectItem
+  selectItem,
+  searchInSublevel
 } = app
 
 class LeftNavigationContainer extends Component {
   render () {
-    const { categories, actions: { selectItem } } = this.props
+    const { categories, actions: { selectItem, searchInSublevel } } = this.props
 
     return (
-      <LeftNavigation items={categories} onSelectItem={selectItem} />  
+      <LeftNavigation items={categories} onSelectItem={selectItem} onSearch={searchInSublevel} />  
     )
   }
 }
@@ -27,7 +28,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({selectItem}, dispatch) }
+  return { actions: bindActionCreators({ selectItem, searchInSublevel }, dispatch) }
 }
 
 export default connect(

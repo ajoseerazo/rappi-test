@@ -6,7 +6,7 @@ import './style.scss';
 
 export default class LeftNavigation extends Component {
   renderItem = (item) => {
-    const { onSelectItem } = this.props
+    const { onSelectItem, onSearch } = this.props
 
     return (
       <Nav key={item.id} id={item.id + item.name} onClick={() => {
@@ -17,7 +17,9 @@ export default class LeftNavigation extends Component {
           this.renderItems(item.sublevels)
           :
           <Nav>
-            <Input placeholder="Buscar en esta categoría"/>
+            <Input placeholder="Buscar en esta categoría" onChange={(e) => {
+              onSearch(e.target.value, item)
+            }}/>
           </Nav>
         }
       </Nav>

@@ -98,7 +98,11 @@ export function updateFilters (filters, {key, value}) {
   if (index === -1) {
     newFilters.push({key, value})
   } else {
-    newFilters[index].value = value
+    if (key === 'available' && value === '') {
+      newFilters.splice(index, 1)
+    } else {
+      newFilters[index].value = value 
+    }
   }
 
   return newFilters
@@ -123,10 +127,19 @@ export function getpriceRange () {
 
   const productsSorted = sortProducts(productsNormalized, 'priceNumber')
 
-  console.log(productsSorted)
-
   return {
     min: productsSorted[0].priceNumber,
     max: productsSorted[productsSorted.length - 1].priceNumber
   }
+}
+
+export function searchProductsInSublevelByQuery (query, sublevel) {
+  const regex = new RegExp(query, 'i')
+
+  let productsInSublevel = []
+  searchProductsBySublevel(sublevel, productsInSublevel)
+
+  return _.filter(productsInSublevel, (product) => {
+    return regex.test(product.name)
+  })
 }
