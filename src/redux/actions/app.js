@@ -8,6 +8,8 @@ const appActions = {
   FILTER_PRODUCTS: 'FILTER_PRODUCTS',
   CLEAR_FILTERS: 'CLEAR_FILTERS',
   SEARCH_IN_SUBLEVEL: 'SEARCH_IN_SUBLEVEL',
+  OPEN_FILTERS: 'OPEN_FILTERS',
+  CLOSE_FILTERS: 'CLOSE_FILTERS',
   selectItem: (item) => {
     let productsFiltered = []
 
@@ -50,6 +52,16 @@ const appActions = {
       type: appActions.SEARCH_IN_SUBLEVEL,
       query,
       item
+    }
+  },
+  closeFilters: () => {
+    return {
+      type: appActions.CLOSE_FILTERS
+    }
+  },
+  openFilters: () => {
+    return {
+      type: appActions.OPEN_FILTERS
     }
   }
 }

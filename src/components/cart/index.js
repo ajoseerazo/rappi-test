@@ -37,20 +37,20 @@ export default class Cart extends Component {
             products.map(product => (
               <li className="cart-product" key={product.id}>
                 <Row>
-                  <Col sm="2" className="cart-product-quantity text-center">
+                  <Col sm="2" xs="2" className="cart-product-quantity text-center">
                     {/*<Button size="sm" onClick={() => onClickPlus(product)}>+</Button>*/}
                     <FontAwesomeIcon icon="caret-up" onClick={() => onClickPlus(product)} />
                     <div className="quantity">{product.quantity}</div>
                     <FontAwesomeIcon icon="caret-down" onClick={() => onClickMinus(product)} />
                     {/*<Button size="sm" onClick={() => onClickMinus(product)}>-</Button>*/}
                   </Col>
-                  <Col sm="6" className="cart-product-name">
+                  <Col sm="6" xs="6" className="cart-product-name">
                     {product.name}
                   </Col>
-                  <Col sm="2" className="cart-product-price text-right">
+                  <Col sm="2" xs="2" className="cart-product-price text-right">
                     {product.price}
                   </Col>
-                  <Col sm="2" className="cart-product-remove text-right" onClick={() => onClickRemoveProduct(product)} >
+                  <Col sm="2" xs="2" className="cart-product-remove text-right" onClick={() => onClickRemoveProduct(product)} >
                     <FontAwesomeIcon icon="times" />
                   </Col>
                 </Row>

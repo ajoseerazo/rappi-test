@@ -3,12 +3,20 @@ import Header from '../../components/header'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import _ from 'lodash'
+import appActions from '../../redux/actions/app'
+
+const {
+  openFilters
+} = appActions
 
 class HeaderContainer extends Component {
   render () {
-    const { onClickCartButton, productsCount }  = this.props
+    const { 
+      onClickCartButton, 
+      productsCount,
+      actions: { openFilters } }  = this.props
 
-    return <Header onClickCartButton={onClickCartButton} productsCount={productsCount} />
+    return <Header onClickCartButton={onClickCartButton} productsCount={productsCount} onClickMenu={openFilters} />
   }
 }
 
@@ -25,7 +33,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({}, dispatch) }
+  return { actions: bindActionCreators({ openFilters }, dispatch) }
 }
 
 export default connect(

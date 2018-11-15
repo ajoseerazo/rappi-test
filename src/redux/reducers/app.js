@@ -26,7 +26,8 @@ const initialState = new Map({
   filters: [],
   productsFiltered: [],
   stockRange: getQuantityRange(),
-  priceRange: getpriceRange()
+  priceRange: getpriceRange(),
+  isFiltersOpened: true
 })
 
 export default function appReducer (state = initialState, action) {
@@ -105,9 +106,11 @@ export default function appReducer (state = initialState, action) {
         productsFilteredByQuery = sortProducts(productsFilteredByQuery, state.get("sort").key, state.get("sort").mode)  
       }
 
-      console.log(productsFilteredByQuery)
-
       return state.set(productsKey, productsFilteredByQuery)
+    case actions.CLOSE_FILTERS:
+      return state.set("isFiltersOpened", false);
+    case actions.OPEN_FILTERS:
+      return state.set("isFiltersOpened", true);
     default:
       return state
   }

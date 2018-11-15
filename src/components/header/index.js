@@ -9,16 +9,18 @@ import {
 import './style.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faShoppingBasket)
+library.add(faShoppingBasket, faBars)
 
 export default class Header extends Component {
   render () {
-    const { onClickCartButton, productsCount } = this.props
+    const { onClickCartButton, productsCount, onClickMenu } = this.props
 
     return (
       <Navbar color="white" light expand="md" fixed="top">
+        <FontAwesomeIcon size="lg" icon="bars" style={{marginRight: 15, cursor: 'pointer'}} onClick={onClickMenu}/>
+
         <NavbarBrand href="/">e-commerce</NavbarBrand>
 
         <Nav className="ml-auto" navbar>

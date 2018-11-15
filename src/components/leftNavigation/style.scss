@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .left-navigation {
   .categories {
     padding: 10px 10px 0px 10px;
@@ -20,6 +22,35 @@
           }
         }
       }
+    }
+  }
+
+  .btn.filter-btn {
+    display: none;
+    background: $primary-color;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 85%;
+    border: none;
+    border-radius: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .left-navigation {
+    margin-bottom: 50px;
+
+    h5 {
+      font-size: 18px;
+    }
+
+    .nav-item {
+      font-size: 14px;
+    }
+
+    .btn.filter-btn {
+      display: block;
     }
   }
 }

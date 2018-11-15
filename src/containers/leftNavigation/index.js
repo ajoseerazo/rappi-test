@@ -6,29 +6,42 @@ import app from '../../redux/actions/app'
 
 const {
   selectItem,
-  searchInSublevel
+  searchInSublevel,
+  closeFilters
 } = app
 
 class LeftNavigationContainer extends Component {
   render () {
-    const { categories, actions: { selectItem, searchInSublevel } } = this.props
+    const { 
+      categories, 
+      isFiltersOpened,
+      actions: { selectItem, searchInSublevel, closeFilters } } = this.props
+
+    if (!isFiltersOpened) {
+      return <div></div>
+    }
 
     return (
-      <LeftNavigation items={categories} onSelectItem={selectItem} onSearch={searchInSublevel} />  
+      <div className="left-navigation-container">
+        <LeftNavigation items={categories} onSelectItem={selectItem} onSearch={searchInSublevel} onClickCloseFilters={closeFilters} isOpened={isFiltersOpened} />  
+      </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  const { categories } = state.App.toJS() 
+  const { categories, isFiltersOpened } = state.App.toJS() 
+
+  console.log(isFiltersOpened)
 
   return {
-    categories
+    categories,
+    isFiltersOpened
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators({ selectItem, searchInSublevel }, dispatch) }
+  return { actions: bindActionCreators({ selectItem, searchInSublevel, closeFilters }, dispatch) }
 }
 
 export default connect(

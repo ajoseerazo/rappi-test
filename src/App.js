@@ -28,7 +28,7 @@ export default class App extends Component {
           <Header onClickCartButton={this.toggleCart} />
 
           <Row className="App-container">
-            <Col sm="3" className="left-navigation-container">
+            <Col sm="3">
               <LeftNavigation />
             </Col>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input } from 'reactstrap';
+import { Input, Button } from 'reactstrap';
 import { SideNav, Nav } from 'react-sidenav'
 import Filters from '../../containers/filters'
 import './style.scss';
@@ -33,7 +33,12 @@ export default class LeftNavigation extends Component {
   }
 
   render () {
-    const { items } = this.props
+    const { items, onClickCloseFilters, isOpened } = this.props
+
+    if (!isOpened) {
+      console.log("sss")
+      return <div></div>;
+    }
 
     return (
       <div className="left-navigation">
@@ -45,6 +50,8 @@ export default class LeftNavigation extends Component {
         </div>
 
         <Filters />
+
+        <Button className="filter-btn" size="lg" onClick={onClickCloseFilters}>Filtrar</Button>
       </div>
     );
   }
