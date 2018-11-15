@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   Row,
   Col,
@@ -12,7 +12,7 @@ import './style.scss'
 
 library.add([faTimes, faCaretDown, faCaretUp])
 
-export default class Cart extends Component {
+export default class Cart extends PureComponent {
   render () {
     const { products, isOpened, onClickClose, onClickRemoveProduct, onClickPay, onClickMinus, onClickPlus } = this.props
 

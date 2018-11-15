@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   Input,
   Label,
@@ -8,7 +8,7 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import './style.scss';
 
-export default class Filters extends Component {
+export default class Filters extends PureComponent {
   state = { }
 
   componentDidMount() {

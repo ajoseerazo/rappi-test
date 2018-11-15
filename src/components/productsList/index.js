@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { 
   Col,
   Row } from 'reactstrap';
@@ -6,7 +6,7 @@ import Product from '../product';
 import Sort from '../../containers/sort'
 import './style.scss';
 
-export default class ProductsList extends Component {
+export default class ProductsList extends PureComponent {
   render () {
     const { products, breadcrumb, onAddToCart } = this.props;
 

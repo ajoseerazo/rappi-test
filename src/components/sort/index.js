@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   Input,
   Label, 
   Form } from 'reactstrap';
 import './style.scss'
 
-export default class Sort extends Component {
+export default class Sort extends PureComponent {
   onChange = (e) => {
     if (e.target.value !== '') {
       let value = JSON.parse(e.target.value)

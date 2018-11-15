@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import {
   Nav,
   NavItem,
@@ -13,7 +13,7 @@ import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faShoppingBasket, faBars)
 
-export default class Header extends Component {
+export default class Header extends PureComponent {
   render () {
     const { onClickCartButton, productsCount, onClickMenu } = this.props
 

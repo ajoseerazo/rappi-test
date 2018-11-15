@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { 
   Card, 
   CardText, 
@@ -7,7 +7,7 @@ import {
   Button } from 'reactstrap';
 import './style.scss'
 
-export default class Product extends Component {
+export default class Product extends PureComponent {
   onClickOnAddToCart = () => {
     const { onAddToCart, product } = this.props
 

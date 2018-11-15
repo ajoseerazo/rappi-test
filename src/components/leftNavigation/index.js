@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Input, Button } from 'reactstrap';
 import { SideNav, Nav } from 'react-sidenav'
 import Filters from '../../containers/filters'
 import './style.scss';
 
-export default class LeftNavigation extends Component {
+export default class LeftNavigation extends PureComponent {
   renderItem = (item) => {
     const { onSelectItem, onSearch } = this.props
 
