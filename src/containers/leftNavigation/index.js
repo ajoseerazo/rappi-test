@@ -17,12 +17,12 @@ class LeftNavigationContainer extends Component {
       isFiltersOpened,
       actions: { selectItem, searchInSublevel, closeFilters } } = this.props
 
-    if (!isFiltersOpened) {
+    /*if (!isFiltersOpened) {
       return <div></div>
-    }
+    }*/
 
     return (
-      <div className="left-navigation-container">
+      <div className={`left-navigation-container ${isFiltersOpened ? 'open' : '' }`}>
         <LeftNavigation items={categories} onSelectItem={selectItem} onSearch={searchInSublevel} onClickCloseFilters={closeFilters} isOpened={isFiltersOpened} />  
       </div>
     )

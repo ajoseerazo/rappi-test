@@ -38,11 +38,9 @@ export default class Cart extends Component {
               <li className="cart-product" key={product.id}>
                 <Row>
                   <Col sm="2" xs="2" className="cart-product-quantity text-center">
-                    {/*<Button size="sm" onClick={() => onClickPlus(product)}>+</Button>*/}
                     <FontAwesomeIcon icon="caret-up" onClick={() => onClickPlus(product)} />
                     <div className="quantity">{product.quantity}</div>
                     <FontAwesomeIcon icon="caret-down" onClick={() => onClickMinus(product)} />
-                    {/*<Button size="sm" onClick={() => onClickMinus(product)}>-</Button>*/}
                   </Col>
                   <Col sm="6" xs="6" className="cart-product-name">
                     {product.name}

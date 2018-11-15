@@ -26,8 +26,7 @@ const initialState = new Map({
   filters: [],
   productsFiltered: [],
   stockRange: getQuantityRange(),
-  priceRange: getpriceRange(),
-  isFiltersOpened: true
+  priceRange: getpriceRange()
 })
 
 export default function appReducer (state = initialState, action) {

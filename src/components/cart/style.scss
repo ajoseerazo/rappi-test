@@ -139,7 +139,22 @@
 @media screen and (max-width: 768px) {
   .cart {
     .cart-container {
-      width: 100%;
+      width: 85%;
+
+      .cart-header {
+        height: 60px;
+        h3 {
+          font-size: 20px;
+        }
+      }
+
+      ul.cart-products {
+        max-height: calc(100% - 80px - 60px);
+      }
+
+      .card-footer {
+        height: 80px;
+      }
     }
   }
 }

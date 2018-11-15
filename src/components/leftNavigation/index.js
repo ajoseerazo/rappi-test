@@ -33,12 +33,7 @@ export default class LeftNavigation extends Component {
   }
 
   render () {
-    const { items, onClickCloseFilters, isOpened } = this.props
-
-    if (!isOpened) {
-      console.log("sss")
-      return <div></div>;
-    }
+    const { items, onClickCloseFilters } = this.props
 
     return (
       <div className="left-navigation">
