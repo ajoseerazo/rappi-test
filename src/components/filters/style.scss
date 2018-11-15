@@ -1,11 +1,35 @@
+@import '../../variables';
+
 .filters {
   padding: 20px;
+  margin-top: 20px;
+  border-top: 1px solid $border-color;
+
+  .filters-header {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .filter-item {
     margin: 15px 0px 25px;
 
     label {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .input-range-container {
+      padding: 0px 20px;
+      margin: 15px 0px 40px;
+
+      .input-range__slider {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+
+      .input-range__track--active {
+        background-color: $primary-color;
+      }
     }
   }
 }

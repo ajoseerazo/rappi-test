@@ -65,13 +65,15 @@ export default class Filters extends Component {
 
     return (
       <div className="filters">
-        <h4>Filtros</h4>
+        <div className="filters-header">
+          <h5>Filtros</h5>
 
-        <Button size="sm" color="primary" onClick={onClearFilters} disabled={!filters.length}>Limpiar filtros</Button>
+          <Button size="sm" color="link" onClick={onClearFilters} disabled={!filters.length}>Limpiar filtros</Button>
+        </div>
 
         <div className="filter-item">
           <Label>Disponibilidad</Label>
-          <Input type="select" name="select" onChange={this.onChangeInput} value={available}>
+          <Input size="sm" type="select" name="select" onChange={this.onChangeInput} value={available}>
             <option value=''> --- </option>
             <option value={true}>Disponible</option>
             <option value={false}>No disponible</option>
@@ -82,12 +84,14 @@ export default class Filters extends Component {
           <Label>Rango de Precio</Label>
           {
             price !== undefined &&
-            <InputRange
-              maxValue={priceRange.max}
-              minValue={priceRange.min}
-              value={price}
-              step={100}
-              onChange={this.onChangePrice} />
+            <div className="input-range-container">
+              <InputRange
+                maxValue={priceRange.max}
+                minValue={priceRange.min}
+                value={price}
+                step={100}
+                onChange={this.onChangePrice} />
+            </div>
           }
         </div>
 
@@ -95,12 +99,14 @@ export default class Filters extends Component {
           <Label>Cantidad en stock</Label>
           {
             quantity !== undefined &&
-            <InputRange
-              maxValue={stockRange.max}
-              minValue={stockRange.min}
-              step={100}
-              value={quantity}
-              onChange={this.onChangeQuantity} />
+            <div className="input-range-container">
+              <InputRange
+                maxValue={stockRange.max}
+                minValue={stockRange.min}
+                step={100}
+                value={quantity}
+                onChange={this.onChangeQuantity} />
+            </div>
           }
         </div>
       </div>

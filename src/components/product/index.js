@@ -4,8 +4,8 @@ import {
   CardText, 
   CardBody,
   CardTitle, 
-  CardSubtitle, 
   Button } from 'reactstrap';
+import './style.scss'
 
 export default class Product extends Component {
   onClickOnAddToCart = () => {
@@ -18,14 +18,14 @@ export default class Product extends Component {
     const { product } = this.props;
 
     return (
-      <div>
-        <Card style={{margin: 10}}>
+      <div className="product-detail">
+        <Card>
           <CardBody>
-            <CardTitle>{product.name}</CardTitle>
-            <CardSubtitle className="text-right">Cantidad: {product.quantity}</CardSubtitle>
-            <CardText className="text-right">Precio: {product.price}</CardText>
-            <CardText className="text-right">{product.available ? 'Disponible' : 'No disponible'}</CardText>
-            <Button disabled={!product.available} onClick={this.onClickOnAddToCart} >Agregar al carrito</Button>
+            <CardTitle className="product-title">{product.name}</CardTitle>
+            <CardText className="text-right product-quantity">Cantidad: {product.quantity}</CardText>
+            <CardText className="text-right product-price">{product.price}</CardText>
+            <CardText className={`text-right product-availability ${product.available ? 'available' : 'not-available'}`}>{product.available ? 'Disponible' : 'No disponible'}</CardText>
+            <Button disabled={!product.available} onClick={this.onClickOnAddToCart} size="sm" >Agregar al carrito</Button>
           </CardBody>
         </Card>
       </div>

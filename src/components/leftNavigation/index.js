@@ -11,13 +11,13 @@ export default class LeftNavigation extends Component {
     return (
       <Nav key={item.id} id={item.id + item.name} onClick={() => {
         onSelectItem(item)}}>
-        <div>{item.name}</div>
+        <div className="nav-item">{item.name}</div>
         {
           item.sublevels ?
           this.renderItems(item.sublevels)
           :
           <Nav>
-            <Input placeholder="Buscar en esta categoría" onChange={(e) => {
+            <Input size="sm" placeholder="Buscar en esta categoría" onChange={(e) => {
               onSearch(e.target.value, item)
             }}/>
           </Nav>
@@ -37,9 +37,12 @@ export default class LeftNavigation extends Component {
 
     return (
       <div className="left-navigation">
-        <SideNav defaultSelectedPath="1">
-          {this.renderItems(items)}
-        </SideNav>
+        <div className="categories">
+          <h5>Categorías</h5>
+          <SideNav defaultSelectedPath="1">
+            {this.renderItems(items)}
+          </SideNav>
+        </div>
 
         <Filters />
       </div>

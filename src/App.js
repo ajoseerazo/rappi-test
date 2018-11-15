@@ -28,11 +28,11 @@ export default class App extends Component {
           <Header onClickCartButton={this.toggleCart} />
 
           <Row className="App-container">
-            <Col sm="3">
+            <Col sm="3" className="left-navigation-container">
               <LeftNavigation />
             </Col>
 
-            <Col sm="9">
+            <Col sm={{size: 9, offset: 3}} className="main-container">
               <ProductsList />
             </Col>
           </Row>

@@ -1,7 +1,15 @@
+@import '../../variables';
+
 .products-list-container {
-  padding: 50px;
+  padding: 20px 40px 40px 40px;
+
+  .title {
+    color: $primary-color;
+    margin-bottom: 30px;
+    font-weight: 900;
+  }
 
   .products-list {
-    justify-content: center;
+    margin-top: 30px;
   }
 }

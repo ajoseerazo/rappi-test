@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .cart {
   position: fixed;
   width: 100%;
@@ -7,6 +9,10 @@
   top: 0;
   background: rgba(0,0,0,0.4);
   display: none;
+
+  .fa-times, .fa-caret-up, .fa-caret-down {
+    cursor: pointer;
+  }
   
   &.open {
     display: block;
@@ -14,7 +20,7 @@
 
   .cart-container {
     position: absolute;
-    width: 350px;
+    width: 450px;
     height: 100%;
     background: white;
     border-left: 1px solid #ccc;
@@ -24,18 +30,44 @@
 
     .cart-footer {
       width: 100%;
-      height: 80px;
+      height: 120px;
       display: flex;
       justify-content: center;
       flex-direction: column;
       align-self: flex-end;
-      border-top: 1px solid;
+      border-top: 1px solid $border-color;
+      padding: 0px 20px;
+
+      .cart-total {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .total-text {
+          font-weight: 700;
+          color: #777;
+          font-size: 14px;
+        }
+
+        .total-price {
+          font-weight: 900;
+          font-size: 30px;
+          line-height: 32px;
+        }
+      }
+      
+      .btn {
+        background-color: $primary-color;
+        border: none;
+        font-weight: 900;
+      }
     }
 
     ul.cart-products {
       list-style: none;
       flex: 1;
-      max-height: calc(100% - 80px - 50px);
+      max-height: calc(100% - 80px - 120px);
       overflow-y: auto;
       overflow-x: hidden;
       padding: 0px;
@@ -44,17 +76,61 @@
       .row {
         margin: 0px;
       }
+
+      .cart-product {
+        padding: 10px 0px;
+        border-bottom: 1px solid $border-color;
+        margin: 0px 10px;
+
+        .cart-product-quantity {
+          padding-left: 0px;
+          justify-content: flex-start;
+
+          .quantity {
+            font-size: 12px;
+          }
+
+          .btn {
+            line-height: 6px;
+            width: 16px;
+            padding: 3px;
+            background: #333;
+            border-color: #333;
+          }
+        }
+
+        .cart-product-name {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+        }
+
+        .cart-product-price {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          color: #777;
+        }
+
+        .cart-product-remove {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      }
     }
   
     .cart-header {
       display: flex;
       justify-content: space-between;
-      height: 50px;
+      height: 80px;
       align-items: center;
       padding: 0px 15px;
+      border-bottom: 1px solid $border-color;
 
       h3 {
         margin: 0px;
+        font-weight: 300;
       }
     }
   }

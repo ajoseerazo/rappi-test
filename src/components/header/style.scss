@@ -1,0 +1,30 @@
+@import '../../variables';
+
+nav.navbar {
+  border-bottom: 1px solid $border-color;
+
+  .navbar-brand {
+    color: $primary-color;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .nav-item {
+    position: relative;
+    cursor: pointer;
+
+    .btn {
+      color: $primary-color;
+    }
+
+    .badge {
+      position: absolute;
+      top: 2px;
+      right: 4px;
+      background-color: #4be411;
+      color: black;
+      border-radius: 50%;
+      box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    }
+  }
+}

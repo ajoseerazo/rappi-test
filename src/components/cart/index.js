@@ -5,7 +5,12 @@ import {
   Button
 } from 'reactstrap'
 import _ from 'lodash'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
+
+library.add([faTimes, faCaretDown, faCaretUp])
 
 export default class Cart extends Component {
   render () {
@@ -24,7 +29,7 @@ export default class Cart extends Component {
         <div className="cart-container">
           <div className="cart-header">
             <h3>Carrito de compra</h3>
-            <div onClick={onClickClose}>X</div>
+            <div onClick={onClickClose}><FontAwesomeIcon icon="times" /></div>
           </div>
 
           <ul className="cart-products">
@@ -33,9 +38,11 @@ export default class Cart extends Component {
               <li className="cart-product" key={product.id}>
                 <Row>
                   <Col sm="2" className="cart-product-quantity text-center">
-                    <Button size="sm" onClick={() => onClickPlus(product)}>+</Button>
-                    <div>{product.quantity}</div>
-                    <Button size="sm" onClick={() => onClickMinus(product)}>-</Button>
+                    {/*<Button size="sm" onClick={() => onClickPlus(product)}>+</Button>*/}
+                    <FontAwesomeIcon icon="caret-up" onClick={() => onClickPlus(product)} />
+                    <div className="quantity">{product.quantity}</div>
+                    <FontAwesomeIcon icon="caret-down" onClick={() => onClickMinus(product)} />
+                    {/*<Button size="sm" onClick={() => onClickMinus(product)}>-</Button>*/}
                   </Col>
                   <Col sm="6" className="cart-product-name">
                     {product.name}
@@ -44,7 +51,7 @@ export default class Cart extends Component {
                     {product.price}
                   </Col>
                   <Col sm="2" className="cart-product-remove text-right" onClick={() => onClickRemoveProduct(product)} >
-                    x
+                    <FontAwesomeIcon icon="times" />
                   </Col>
                 </Row>
               </li>
@@ -53,7 +60,7 @@ export default class Cart extends Component {
           </ul>   
 
           <div className="cart-footer">
-            <div className="cart-total">Total: ${total.toLocaleString("en-US")}</div>
+            <div className="cart-total"><span className="total-text">Total: </span><span className="total-price">${total.toLocaleString("en-US")}</span></div>
             <Button disabled={!total} onClick={() => {
               alert("Compra realizada exitosamente!")
               onClickPay()

@@ -16,7 +16,7 @@ export default class ProductsList extends Component {
           <Col sm="12">
           {
             breadcrumb ?
-            <h1 className="text-center">{breadcrumb.join(" > ")}</h1>
+            <h3 className="title">{breadcrumb.join(" > ")}</h3>
             :
             null
           }
@@ -28,7 +28,7 @@ export default class ProductsList extends Component {
             <Sort />
           </Col>
           <Col sm="4"> 
-            <h4 className="text-right">{products.length} {`resultado${products.length !== 1 ? 's' : ''}`}</h4>
+            <h6 className="text-right">{products.length} {`resultado${products.length !== 1 ? 's' : ''}`}</h6>
           </Col>
         </Row>
         <Row className="products-list">

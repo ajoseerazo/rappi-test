@@ -3,6 +3,7 @@ import {
   Input,
   Label, 
   Form } from 'reactstrap';
+import './style.scss'
 
 export default class Sort extends Component {
   onChange = (e) => {
@@ -17,9 +18,9 @@ export default class Sort extends Component {
 
   render () {
     return (
-      <Form inline>
+      <Form className="sort-component" inline>
         <Label>Ordenar por:</Label>
-        <Input type="select" name="select" onChange={this.onChange} >
+        <Input type="select" name="select" size="sm" onChange={this.onChange} >
           <option value=''> --- </option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'desc'})}>Precio: Mayor a menor</option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'asc'})}>Precio: Menor a mayor</option>

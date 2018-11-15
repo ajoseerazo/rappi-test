@@ -1,9 +1,23 @@
 .left-navigation {
-  ul {
-    li {
-      ul {
-        li {
-          padding-left: 50px;
+  .categories {
+    padding: 10px 10px 0px 10px;
+    margin: 0px;
+
+    h5 {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .nav-item {
+      font-size: 15px;
+    }
+
+    ul {
+      li {
+        ul {
+          li {
+            padding-left: 50px;
+          }
         }
       }
     }

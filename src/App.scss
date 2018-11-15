@@ -1,5 +1,29 @@
+@import './variables';
+
 .App {
   .App-container {
     margin-top: 56px;
+
+    .left-navigation-container {
+      border-right: 1px solid $border-color;
+      position: fixed;
+      height: calc(100% - 56px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0px;
+      left: 0px;
+      z-index: 1;
+    }
+
+    .main-container {
+      background-color: #f8f8f8;
+    }
+  }
+
+  input, select {
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 .2rem $primary-color-transparent;
+    }
   }
 }
