@@ -1,6 +1,9 @@
 import products from '../data/products';
 import _ from 'lodash';
 
+/*
+ * Function to filter all the products of a level
+ */
 export function searchProductsBySublevel (item, productsResult) {
   const { id } = item;
 
@@ -24,6 +27,9 @@ export function searchProductsBySublevel (item, productsResult) {
   }
 }
 
+/*
+ * Function to get the breadcrumb regarding and sublevel selected
+ */
 export function getBreadcrumb (items, item, path, found) {
   if (found.value) {
     return
@@ -52,6 +58,9 @@ export function getBreadcrumb (items, item, path, found) {
   }
 }
 
+/*
+ * Function to filter products regarding filters selected
+ */
 export function filterProducts (productsToFilter, filters) {
   return _.filter(productsToFilter, (product) => {
     let found = false
@@ -84,10 +93,16 @@ export function filterProducts (productsToFilter, filters) {
   })
 }
 
+/*
+ * Function to sort products regarding an attribute and a mode (asc, desc)
+ */
 export function sortProducts (productsToSort, key, mode = 'asc') {
   return _.orderBy(productsToSort, key, mode)
 }
 
+/*
+ * Function to update the filters regarding new values
+ */
 export function updateFilters (filters, {key, value}) {
   let newFilters = filters.slice()
 
@@ -108,6 +123,9 @@ export function updateFilters (filters, {key, value}) {
   return newFilters
 }
 
+/*
+ * Function to get a valid range for quantity regarding the products quantities
+ */
 export function getQuantityRange () {
   const productsSorted = sortProducts(products, 'quantity')
 
@@ -117,6 +135,9 @@ export function getQuantityRange () {
   }
 }
 
+/*
+ * Function to get a valid range for prices regarding products prices
+ */
 export function getpriceRange () {
   const productsNormalized = products.map((p) => {
     return {
@@ -133,6 +154,9 @@ export function getpriceRange () {
   }
 }
 
+/*
+ * Function to search products regarding query
+ */
 export function searchProductsInSublevelByQuery (query, sublevel) {
   const regex = new RegExp(query, 'i')
 
@@ -144,10 +168,16 @@ export function searchProductsInSublevelByQuery (query, sublevel) {
   })
 }
 
+/*
+ * Function to update the cart in localStorage
+ */
 export function updateCartInLocalStorage (products) {
   localStorage.setItem('cart', JSON.stringify(products))
 }
 
+/*
+ * Function to get the cart data from localStorage
+ */
 export function getCartFromLocalStorage () {
   if (!localStorage.getItem('cart')) {
     return []
