@@ -5,6 +5,7 @@ import {
   CardBody,
   CardTitle, 
   Button } from 'reactstrap';
+import PropTypes from 'prop-types'
 import './style.scss'
 
 export default class Product extends PureComponent {
@@ -31,4 +32,9 @@ export default class Product extends PureComponent {
       </div>
     );
   }
+}
+
+Product.propTypes = {
+  onAddToCart: PropTypes.func,
+  product: PropTypes.object
 }

@@ -10,6 +10,7 @@ import './style.scss'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faBars } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 
 library.add(faShoppingBasket, faBars)
 
@@ -32,4 +33,10 @@ export default class Header extends PureComponent {
       </Navbar>
     )
   }
+}
+
+Header.propTypes = {
+  onClickCartButton: PropTypes.func,
+  productsCount: PropTypes.number,
+  onClickMenu: PropTypes.func
 }

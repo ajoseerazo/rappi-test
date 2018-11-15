@@ -8,6 +8,7 @@ import _ from 'lodash'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 import './style.scss'
 
 library.add([faTimes, faCaretDown, faCaretUp])
@@ -68,4 +69,14 @@ export default class Cart extends PureComponent {
       </div>
     )
   }
+}
+
+Cart.propTypes = {
+  products: PropTypes.array, 
+  isOpened: PropTypes.bool, 
+  onClickClose: PropTypes.func, 
+  onClickRemoveProduct: PropTypes.func, 
+  onClickPay: PropTypes.func, 
+  onClickMinus: PropTypes.func, 
+  onClickPlus: PropTypes.func
 }

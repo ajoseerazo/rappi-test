@@ -4,6 +4,7 @@ import {
   Row } from 'reactstrap';
 import Product from '../product';
 import Sort from '../../containers/sort'
+import PropTypes from 'prop-types';
 import './style.scss';
 
 export default class ProductsList extends PureComponent {
@@ -41,4 +42,10 @@ export default class ProductsList extends PureComponent {
       </div>
     );
   }
+}
+
+ProductsList.propTypes = {
+  products: PropTypes.array,
+  breadcrumb: PropTypes.array,
+  onAddToCart: PropTypes.func
 }

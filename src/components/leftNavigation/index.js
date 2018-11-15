@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { Input, Button } from 'reactstrap';
 import { SideNav, Nav } from 'react-sidenav'
 import Filters from '../../containers/filters'
+import PropTypes from 'prop-types'
 import './style.scss';
 
 export default class LeftNavigation extends PureComponent {
@@ -17,7 +18,7 @@ export default class LeftNavigation extends PureComponent {
           this.renderItems(item.sublevels)
           :
           <Nav>
-            <Input size="sm" placeholder="Buscar en esta categoría" onChange={(e) => {
+            <Input bsSize="sm" placeholder="Buscar en esta categoría" onChange={(e) => {
               onSearch(e.target.value, item)
             }}/>
           </Nav>
@@ -50,4 +51,11 @@ export default class LeftNavigation extends PureComponent {
       </div>
     );
   }
+}
+
+LeftNavigation.propTypes = {
+  items: PropTypes.array,
+  onClickCloseFilters: PropTypes.func,
+  onSelectItem: PropTypes.func,
+  onSearch: PropTypes.func
 }

@@ -17,10 +17,6 @@ class LeftNavigationContainer extends Component {
       isFiltersOpened,
       actions: { selectItem, searchInSublevel, closeFilters } } = this.props
 
-    /*if (!isFiltersOpened) {
-      return <div></div>
-    }*/
-
     return (
       <div className={`left-navigation-container ${isFiltersOpened ? 'open' : '' }`}>
         <LeftNavigation items={categories} onSelectItem={selectItem} onSearch={searchInSublevel} onClickCloseFilters={closeFilters} isOpened={isFiltersOpened} />  
@@ -31,8 +27,6 @@ class LeftNavigationContainer extends Component {
 
 function mapStateToProps(state) {
   const { categories, isFiltersOpened } = state.App.toJS() 
-
-  console.log(isFiltersOpened)
 
   return {
     categories,

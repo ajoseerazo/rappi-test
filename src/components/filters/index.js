@@ -6,6 +6,7 @@ import {
 } from 'reactstrap'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
+import PropTypes from 'prop-types'
 import './style.scss';
 
 export default class Filters extends PureComponent {
@@ -73,7 +74,7 @@ export default class Filters extends PureComponent {
 
         <div className="filter-item">
           <Label>Disponibilidad</Label>
-          <Input size="sm" type="select" name="select" onChange={this.onChangeInput} value={available}>
+          <Input bsSize="sm" type="select" name="select" onChange={this.onChangeInput} value={available}>
             <option value=''> --- </option>
             <option value={true}>Disponible</option>
             <option value={false}>No disponible</option>
@@ -113,4 +114,12 @@ export default class Filters extends PureComponent {
       </div>
     )
   }
+}
+
+Filters.propTypes = {
+  stockRange: PropTypes.object, 
+  priceRange: PropTypes.object, 
+  onClearFilters: PropTypes.func, 
+  filters: PropTypes.array,
+  onFilterChanged: PropTypes.func
 }

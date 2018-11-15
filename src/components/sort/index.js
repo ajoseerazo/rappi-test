@@ -3,6 +3,7 @@ import {
   Input,
   Label, 
   Form } from 'reactstrap';
+import PropTypes from 'prop-types';
 import './style.scss'
 
 export default class Sort extends PureComponent {
@@ -20,7 +21,7 @@ export default class Sort extends PureComponent {
     return (
       <Form className="sort-component" inline>
         <Label>Ordenar por:</Label>
-        <Input type="select" name="select" size="sm" onChange={this.onChange} >
+        <Input type="select" name="select" bsSize="sm" onChange={this.onChange} >
           <option value=''> --- </option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'desc'})}>Precio: Mayor a menor</option>
           <option value={JSON.stringify({key: 'priceNumber', mode: 'asc'})}>Precio: Menor a mayor</option>
@@ -32,4 +33,8 @@ export default class Sort extends PureComponent {
       </Form>
     )
   }
+}
+
+Sort.propTypes = {
+  onSelectOption: PropTypes.func
 }
