@@ -1,44 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Demo
+La aplicación se puede ver corriendo en Heroku [aquí]([https://murmuring-chamber-91344.herokuapp.com/)
 
-In the project directory, you can run:
+## Instalación
+Para instalar el proyecto ejecutar
 
-### `npm start`
+### `yarn install`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Ejecución
+Para ejecutar el proyecto ejecutar: 
 
-### `npm test`
+### `yarn start`
+  
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La aplicación correrá en modo de desarrollo.<br>
 
-### `npm run build`
+Abrir [http://localhost:3000](http://localhost:3000) para ver la aplicación en el navegador.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
+## Solución
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Para resolver el problema se decidió utilizar el framework ReactJS + Redux.
+La aplicación se desarrolló a través de componentes presentacionales y contendores, conjuntamente con un manejador de estado a través de Redux.
+Dado que los datos fueron proporcionados, no hubo la necesidad de realizar llamados de API's a backend. En caso de ser requerido se podría usar `redux-thunk` o  `redux-saga`. La aplicación se desarrolló de tal manera que incluir llamados a API's se puede realizar de una manera muy sencilla. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Dado que no habia backend, la lógica de búsqueda y filtrados de datos requirió manipulación de arrays en el código para 
