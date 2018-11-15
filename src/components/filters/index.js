@@ -90,6 +90,7 @@ export default class Filters extends Component {
                 minValue={priceRange.min}
                 value={price}
                 step={100}
+                formatLabel={value => `$${value.toLocaleString("en-US")}`}
                 onChange={this.onChangePrice} />
             </div>
           }

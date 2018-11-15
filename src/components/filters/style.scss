@@ -30,6 +30,11 @@
       .input-range__track--active {
         background-color: $primary-color;
       }
+
+      .input-range__label-container {
+        font-size: 12px;
+        color: #999;
+      }
     }
   }
 }

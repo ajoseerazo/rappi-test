@@ -21,7 +21,7 @@ const initialState = new Map({
   }),
   categories,
   itemSelected: null,
-  breadcrumb: ['Todos'],
+  breadcrumb: ['Todos los productos'],
   sort: null,
   filters: [],
   productsFiltered: [],
@@ -72,7 +72,7 @@ export default function appReducer (state = initialState, action) {
                   .set("filters", newFilters)
     case actions.CLEAR_FILTERS:
       let clearedFinalProducts = []
-      
+
       if (state.get("itemSelected")) {
         let productsFilteredCleared = []
         searchProductsBySublevel(state.get("itemSelected"), productsFilteredCleared);
